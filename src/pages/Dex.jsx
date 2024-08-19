@@ -11,6 +11,10 @@ const Dex = () => {
       if (selectedPokemon.find((p) => p.id === pokemon.id)) {
         return selectedPokemon;
       }
+      if (selectedPokemon.length >= 6) {
+        alert('포켓몬은 최대 여섯개까지만 선택 할 수 있어요.');
+        return selectedPokemon;
+      }
       return [...selectedPokemon, pokemon];
     });
   };

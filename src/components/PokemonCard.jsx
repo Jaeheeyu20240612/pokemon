@@ -10,7 +10,14 @@ const Card = styled.div`
   border-radius: 10px;
   background-color: white;
 `;
-const Button = styled.button``;
+const Button = styled.button`
+  margin-top: 1em;
+  border: none;
+  background-color: red;
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+`;
 const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
   return (
     <Card>
