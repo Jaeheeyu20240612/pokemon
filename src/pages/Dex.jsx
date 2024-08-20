@@ -19,7 +19,7 @@ const Dex = () => {
       return [...selectedPokemon, pokemon];
     });
   };
-  console.log(selectedPokemon);
+
   const removePokemon = (pokemon) => {
     //   {* 제거는 필터를 이용해 봅시다 *}
     const filteredPokemon = selectedPokemon.filter((p) => p.id !== pokemon.id);

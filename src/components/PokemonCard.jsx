@@ -11,6 +11,12 @@ const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
   border-radius: 10px;
   background-color: white;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px;
+    transform: translateY(-5px);
+  }
 `;
 const Button = styled.button`
   cursor: pointer;
@@ -27,7 +33,7 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
   return (
     <Card
       onClick={() => {
-        navigate(`/detail/${pokemon.id}`);
+        navigate(`/detail/${pokemon.id}`, { state: { pokemon } });
       }}
     >
       <div className='cardDiv'>
