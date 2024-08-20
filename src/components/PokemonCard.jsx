@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import FormatID from '../utils/FormatID';
+import { useNavigate } from 'react-router-dom';
+
 const Card = styled.div`
   width: 155px;
   height: 240px;
@@ -11,16 +13,23 @@ const Card = styled.div`
   background-color: white;
 `;
 const Button = styled.button`
+  cursor: pointer;
   margin-top: 1em;
   border: none;
-  background-color: red;
+  background-color: crimson;
   color: white;
   padding: 8px;
   border-radius: 5px;
 `;
+
 const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
+  const navigate = useNavigate();
   return (
-    <Card>
+    <Card
+      onClick={() => {
+        navigate(`/detail/${pokemon.id}`);
+      }}
+    >
       <div className='cardDiv'>
         <img
           style={{ width: '100px', height: '100px' }}
@@ -32,10 +41,18 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
       </div>
 
       {isSelected ? (
-        <Button onClick={() => {}}>삭제</Button>
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            onRemove(pokemon);
+          }}
+        >
+          삭제
+        </Button>
       ) : (
         <Button
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             onAdd(pokemon);
             isSelected = { isSelected };
           }}

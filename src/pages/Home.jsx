@@ -17,7 +17,7 @@ const Home = () => {
   const buttonStyle = {
     padding: '1em',
     border: 'none',
-    backgroundColor: 'red',
+    backgroundColor: 'crimson',
     color: 'white',
     borderRadius: '10px',
   };

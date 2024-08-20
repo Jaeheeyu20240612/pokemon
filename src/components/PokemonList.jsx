@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PokemonCard from './PokemonCard';
 
 const ListContainer = styled.div`
-  width: 90%;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 3em;
   justify-content: center;
   align-items: center;
 

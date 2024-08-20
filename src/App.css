@@ -17,3 +17,7 @@ body {
   margin-top: 10px;
   gap: 15px;
 }
+
+.go-dex-button {
+  cursor: pointer;
+}

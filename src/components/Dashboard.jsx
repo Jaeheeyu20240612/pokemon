@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { Card } from './PokemonCard';
 import FormatId from '../utils/FormatId';
+
 const DashboardContainer = styled.div`
-  width: 100%;
+  width: 80%;
   height: 10%;
   background-color: #afafaf;
   border-radius: 10px;
@@ -39,39 +40,39 @@ const PoketBall = styled.img`
   background-position: center;
   background-repeat: none;
 `;
-const selectedBox = {
-  width: '100px',
-  height: '100px',
-  border: '1px solid gray',
-};
 
+const ListWrap = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 1em;
+  gap: 1em;
+`;
+
+const DeleteButton = styled.button`
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  background-color: crimson;
+  color: white;
+  border-radius: 5px;
+  margin-top: 1em;
+`;
 const Dashboard = ({ selectedPokemon, onRemovePokemon }) => {
   return (
-    <DashboardContainer style={{ width: '90%' }}>
+    <DashboardContainer>
       <DashboardTitle>나만의 포켓몬</DashboardTitle>
       {selectedPokemon.length === 0 ? (
         <DashBox>
-          <PoketBall />
-          <PoketBall />
-          <PoketBall />
-          <PoketBall />
-          <PoketBall />
-          <PoketBall />
+          {Array.from({ length: 6 }, (_, index) => (
+            <PoketBall key={index} />
+          ))}
         </DashBox>
       ) : (
-        <ul
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            marginBottom: '1em',
-            gap: '2em',
-          }}
-        >
+        <ListWrap>
           {selectedPokemon.map((pokemon) => (
-            <Card>
+            <Card style={{ marginTop: '0', width: '140px' }}>
               <li key={pokemon.id}>
                 <img
                   style={{ marginTop: '1em' }}
@@ -79,11 +80,18 @@ const Dashboard = ({ selectedPokemon, onRemovePokemon }) => {
                   alt=''
                 />
                 <p>{pokemon.korean_name}</p>
-                <p>{FormatId(pokemon.id)}</p>
+                <p style={{ marginTop: '10px' }}>{FormatId(pokemon.id)}</p>
+                <DeleteButton
+                  onClick={() => {
+                    onRemovePokemon(pokemon);
+                  }}
+                >
+                  삭제
+                </DeleteButton>
               </li>
             </Card>
           ))}
-        </ul>
+        </ListWrap>
       )}
     </DashboardContainer>
   );

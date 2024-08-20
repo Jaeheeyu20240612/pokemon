@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Dex from './pages/Dex';
-import PokemonDetail from './pages/PokemonDetail ';
+import PokemonDetail from './pages/PokemonDetail';
 import styled from 'styled-components';
 function App() {
   const [count, setCount] = useState(0);
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/dex' element={<Dex />} />
-          <Route path='/detail' element={<PokemonDetail />} />
+          <Route path='/detail/:id' element={<PokemonDetail />} />
         </Routes>
       </BrowserRouter>
     </>
