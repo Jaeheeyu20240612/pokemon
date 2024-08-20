@@ -11,9 +11,10 @@ const ListContainer = styled.div`
   align-items: center;
 
   margin-top: 1em;
+  margin-bottom: 3em;
+  border: 1px solid #2f0a6b;
   border-radius: 10px;
-  box-shadow: rgba(9, 2, 2, 0.338) 0px 4px 8px;
-  background-color: #afafaf;
+  background-color: white;
 `;
 
 const PokemonList = ({ pokemonList, onAddPokemon, Card }) => {

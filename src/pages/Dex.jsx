@@ -10,6 +10,7 @@ const Dex = () => {
     //   {* 포켓몬을 선택하는 로직을 완성해봅시다 *}
     setSelectedPokemon((selectedPokemon) => {
       if (selectedPokemon.find((p) => p.id === pokemon.id)) {
+        alert('이미 추가된 포켓몬이에요.');
         return selectedPokemon;
       }
       if (selectedPokemon.length >= 6) {

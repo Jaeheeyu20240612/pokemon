@@ -26,14 +26,19 @@ const Button = styled.button`
   color: white;
   padding: 8px;
   border-radius: 5px;
+  &:hover {
+    background-color: black;
+    transition: 0.5s;
+  }
 `;
 
 const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
   const navigate = useNavigate();
   return (
     <Card
-      onClick={() => {
-        navigate(`/detail/${pokemon.id}`, { state: { pokemon } });
+      onClick={(e) => {
+        e.stopPropagation();
+        navigate(`/detail?id=${pokemon.id}`);
       }}
     >
       <div className='cardDiv'>
@@ -49,6 +54,7 @@ const PokemonCard = ({ pokemon, onAdd, onRemove, isSelected }) => {
       {isSelected ? (
         <Button
           onClick={(e) => {
+            // 이벤트의 전파 중단(카드 클릭 이벤트로 안가게)
             e.stopPropagation();
             onRemove(pokemon);
           }}
